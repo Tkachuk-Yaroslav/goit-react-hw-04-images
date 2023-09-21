@@ -5,20 +5,20 @@ const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ onClose, largeImageURL, tags }) => {
   useEffect(() => {
+    const handlerEscape = e => {
+      if (e.code === 'Escape') {
+        //   console.log('e.code', e.code);
+        onClose();
+      }
+    };
+
     console.log('Компонент замаунтився в модалці');
     window.addEventListener('keydown', handlerEscape);
     return () => {
       console.log('Компонент розмонтувався в модалці');
       window.removeEventListener('keydown', handlerEscape);
     };
-  }, []);
-
-  const handlerEscape = e => {
-    if (e.code === 'Escape') {
-      //   console.log('e.code', e.code);
-      onClose();
-    }
-  };
+  }, [onClose]);
 
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
