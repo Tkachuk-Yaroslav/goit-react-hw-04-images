@@ -7,6 +7,39 @@ import Button from './Button/Button';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 
 const LIMIT = 12;
+
+// import { useState, useEffect } from 'react';
+// const App = () => {
+//   const [searchQuery, setSearchQuery] = useState('');
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [isLoadMore, setIsLoadMore] = useState(false);
+//   const [images, setImages] = useState(null);
+//   const [modalImg, setModalImg] = useState('');
+//   const [showModal, setShowModal] = useState(false);
+
+//   let pageDef = 1;
+//   let currentPage = 1;
+//   const incrementPage = () => {
+//     return (pageDef = pageDef + 1);
+//   };
+
+//   return (
+//     <div className="App">
+//       <Searchbar onSubmit={onFormSubmit} />
+
+//       {images && <ImageGallery images={images} />}
+
+//       {isLoading && <Loader />}
+
+//       {/* {this.state.error && <h1>{this.state.error.message}</h1>} */}
+
+//       {isLoadMore && <Button handleLoadMore={handleLoadMore} />}
+//     </div>
+//   );
+// };
+
+// export default App;
+
 export default class App extends Component {
   state = {
     searchQuery: '',
