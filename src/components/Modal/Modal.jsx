@@ -12,10 +12,10 @@ const Modal = ({ onClose, largeImageURL, tags }) => {
       }
     };
 
-    console.log('Компонент замаунтився в модалці');
+    // console.log('Компонент замаунтився в модалці');
     window.addEventListener('keydown', handlerEscape);
     return () => {
-      console.log('Компонент розмонтувався в модалці');
+      // console.log('Компонент розмонтувався в модалці');
       window.removeEventListener('keydown', handlerEscape);
     };
   }, [onClose]);
