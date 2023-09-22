@@ -5,6 +5,7 @@ import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Button from './Button/Button';
 import { Report } from 'notiflix/build/notiflix-report-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useState, useEffect, useRef } from 'react';
 
 const LIMIT = 12;
@@ -22,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     if (isFistFetch.current === false && searchQuery.trim() === '') {
-      Report.failure('Enter something!', '', 'Okay');
+      Notify.info('Enter something!');
       setImages(null);
       setIsLoadMore(false);
       return;
@@ -64,11 +65,13 @@ const App = () => {
 
       const data = await getImg(searchQuery, currentPage, LIMIT);
 
-      if (data.totalHits > LIMIT * currentPage) {
-        setIsLoadMore(true);
-      } else {
-        setIsLoadMore(false);
-      }
+      // if (data.totalHits > LIMIT * currentPage) {
+      //   setIsLoadMore(true);
+      // } else {
+      //   setIsLoadMore(false);
+      // }
+      setIsLoadMore(data.totalHits > LIMIT * currentPage);
+
       setImages(prevImages => [...prevImages, ...data.hits]);
     } catch (error) {
       console.error('Помилка під час отримання даних:', error);
